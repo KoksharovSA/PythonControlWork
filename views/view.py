@@ -11,9 +11,13 @@ def view_menu():
               "\n4.Удалить заметку"
               "\n5.Выход")
         answer = input("Введите номер операции:")
-        # if answer == "1":
+        if answer == "1":
+            ns = {notes.Notes(id_notes=1,text="qqq"), notes.Notes(id_notes=2,text="www")}
+            view_notes(ns)
         
         
 def view_notes(notes):
     for note in notes:
+        print(note.to_JSON())
+        # print(note.init_json(note.to_JSON()))
         print(note)
