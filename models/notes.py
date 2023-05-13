@@ -1,24 +1,25 @@
 from datetime import datetime
-import json
 
 
 class Notes():
-    def __init__(self, id_notes, text, data=datetime.now()):
-        self.id_notes = id_notes
+    def __init__(self, id_note, head, text, data=datetime.now().__str__()):
+        self.id_note = id_note
+        self.head = head
         self.text = text
         self.data = data
-
-    def init_json(self, json_data):
-        self.__dict__ = json.loads(json_data)
+    
+    @staticmethod
+    def json_to_note(json_dict):
+        print()
+        return Notes(id_note=json_dict['id_note'], head=json_dict['head'], text=json_dict['text'], data=json_dict[
+            'data'])
     
     def __str__(self):
-        return f'id: {self.id_notes}\n Текст заметки: {self.text}\n Дата создания: {self.data}\n'
+        return f'id: {self.id_note}\n Заголовок заметки: {self.head}\n Текст заметки: {self.text}\n Дата создания: {self.data}\n'
     
     def to_list_notes(self):
-        return [self.id_notes, self.text, self.data]
+        return [self.id_note, self.head, self.text, self.data]
     
-    def to_JSON(self):
-        return json.dumps(self, default=lambda x: x.__dict__, sort_keys=True)
-    
-    def to_dict(self):
-        return {'id': self.id_notes, 'text': self.text, 'data': self.data}
+    @staticmethod
+    def next_id(id_notes):
+        return max([int(x) for x in id_notes]) + 1

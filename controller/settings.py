@@ -1,1 +1,1 @@
-directory_db_notes = ""
+directory_db_notes = "/home/KSA/GB/Python/PythonControlWork/data/database.json"
